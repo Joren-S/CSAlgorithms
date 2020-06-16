@@ -16,14 +16,16 @@ namespace Algorithms
 
         static void ThreadEntry()
         {
+            // Generator settings for randomly generated array
             const int
                 GEN_COUNT = 1000000,
                 GEN_MIN = -100000,
                 GEN_MAX = 100000,
 
                 SEARCH_COUNT = 150;
+
             const bool
-                GEN_SORT = true;
+                GEN_SORT = false;
             
 
             #region Generator
@@ -54,7 +56,7 @@ namespace Algorithms
                 benchmark.Start();
                 for (int i = 0; i < SEARCH_COUNT; i++)
                 {
-                    if (srch.search(i))
+                    if (srch.search(i) == true)
                         foundValues++;
                 }
                 StoredTime[algorithm] = benchmark.Stop();

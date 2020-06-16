@@ -26,8 +26,15 @@ namespace Algorithms
         // Public functions
 
         #region Main functions
-        public bool search(int n)
+        public bool? search(int n, bool overloadSortCheck = false)
         {
+            if (!overloadSortCheck)
+            {
+                bool? sorted = new Sorter(array).IsArraySorted();
+                if (sorted == null || sorted == false)
+                    return null;
+            }
+
             bool found = false;
             switch (algorithm)
             {
@@ -58,6 +65,7 @@ namespace Algorithms
         #endregion  
 
         // Private functions
+
 
         #region Linear
         private bool LinearSearch(int n)
